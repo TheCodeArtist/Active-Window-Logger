@@ -8,6 +8,11 @@ One of the ideas behind writing such an application is to develop a personal tim
 
 ![MVP Sample screenshot](ReferenceMaterials/Screenshots/MVP-sample.png/?raw=true "Screenshot of MVP Sample")
 
+# Getting started #
+
+Here is installer of the first MVP build :  
+<a href="https://github.com/TheCodeArtist/Active-Window-Logger/blob/master/ActiveWindowLogger/publish/setup.exe" target="_blank">**setup.exe**</a> (verified on Windows7 x64).
+
 # License #
 
 Contents licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike CC BY-SA</a>.
