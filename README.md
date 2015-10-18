@@ -11,7 +11,7 @@ One of the ideas behind writing such an application is to develop a personal tim
 # Getting started #
 
 Here is installer of the first MVP build :  
-<a href="https://github.com/TheCodeArtist/Active-Window-Logger/blob/master/ActiveWindowLogger/publish/setup.exe" target="_blank">**setup.exe**</a> (verified on Windows7 x64).
+<a href="https://github.com/TheCodeArtist/Active-Window-Logger/blob/master/ActiveWindowLogger/publish/setup.exe?raw=true" target="_blank">**setup.exe**</a> (verified on Windows7 x64).
 
 # License #
 
