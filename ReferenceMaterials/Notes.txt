@@ -1,0 +1,6 @@
+
+
+
+Putty + Screen to show pwd as putty window title.
+PROMPT_COMMAND='echo -ne "\e]0;$USER@${HOSTNAME}: $(pwd -P)\a"'
+(ensure terminal feature settings NOT disabled remote from setting putty title.)
