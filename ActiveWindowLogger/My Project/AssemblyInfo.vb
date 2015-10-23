@@ -12,12 +12,12 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("Active Window Logger")> 
 <Assembly: AssemblyDescription("Smartly log the active foreground window of the system to transparently capture usage analytics.")> 
-<Assembly: AssemblyCompany("CVS Game Studios")> 
+<Assembly: AssemblyCompany("")> 
 <Assembly: AssemblyProduct("Active Window Logger")> 
 <Assembly: AssemblyCopyright("CC BY-SA 4.0 - 2015")> 
 <Assembly: AssemblyTrademark("Active Window Logger")> 
 
-<Assembly: ComVisible(False)> 
+<Assembly: ComVisible(True)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("78626270-da34-490b-aff6-667fdc88da5d")> 
