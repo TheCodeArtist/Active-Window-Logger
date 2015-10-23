@@ -1,4 +1,6 @@
-﻿Imports System
+﻿Imports System.Resources
+
+Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
@@ -8,14 +10,14 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("WindowsApplication1")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("NVIDIA")> 
-<Assembly: AssemblyProduct("WindowsApplication1")> 
-<Assembly: AssemblyCopyright("Copyright © NVIDIA 2015")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTitle("Active Window Logger")> 
+<Assembly: AssemblyDescription("Smartly log the active foreground window of the system to transparently capture usage analytics.")> 
+<Assembly: AssemblyCompany("CVS Game Studios")> 
+<Assembly: AssemblyProduct("Active Window Logger")> 
+<Assembly: AssemblyCopyright("CC BY-SA 4.0 - 2015")> 
+<Assembly: AssemblyTrademark("Active Window Logger")> 
 
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("78626270-da34-490b-aff6-667fdc88da5d")> 
@@ -33,3 +35,5 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyVersion("1.0.0.0")> 
 <Assembly: AssemblyFileVersion("1.0.0.0")> 
+
+<Assembly: NeutralResourcesLanguageAttribute("en-GB")> 

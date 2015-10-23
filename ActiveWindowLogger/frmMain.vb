@@ -164,4 +164,8 @@ Public Class frmMain
         lvEntries.Width = Me.Width - 30
         lvEntries.Height = Me.Height - 216
     End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
+        frmAbout.ShowDialog()
+    End Sub
 End Class

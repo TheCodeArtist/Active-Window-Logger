@@ -23,6 +23,7 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.tmrPoll = New System.Windows.Forms.Timer(Me.components)
         Me.txtPID = New System.Windows.Forms.TextBox
         Me.txtProcessName = New System.Windows.Forms.TextBox
@@ -43,7 +44,11 @@ Partial Class frmMain
         Me.ColumnHeader4 = New System.Windows.Forms.ColumnHeader
         Me.ColumnHeader5 = New System.Windows.Forms.ColumnHeader
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.GroupBox1.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'tmrPoll
@@ -147,7 +152,7 @@ Partial Class frmMain
         Me.chkStatus.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.chkStatus.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkStatus.ForeColor = System.Drawing.Color.Snow
-        Me.chkStatus.Location = New System.Drawing.Point(12, 17)
+        Me.chkStatus.Location = New System.Drawing.Point(12, 38)
         Me.chkStatus.Name = "chkStatus"
         Me.chkStatus.Size = New System.Drawing.Size(160, 120)
         Me.chkStatus.TabIndex = 7
@@ -164,7 +169,7 @@ Partial Class frmMain
         Me.GroupBox1.Controls.Add(Me.txtWindowStatus)
         Me.GroupBox1.Controls.Add(Me.txtWindowTitle)
         Me.GroupBox1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.GroupBox1.Location = New System.Drawing.Point(178, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(178, 33)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(278, 125)
         Me.GroupBox1.TabIndex = 8
@@ -175,7 +180,7 @@ Partial Class frmMain
         '
         Me.lblStatus.BackColor = System.Drawing.Color.LemonChiffon
         Me.lblStatus.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatus.Location = New System.Drawing.Point(18, 100)
+        Me.lblStatus.Location = New System.Drawing.Point(18, 121)
         Me.lblStatus.Name = "lblStatus"
         Me.lblStatus.Size = New System.Drawing.Size(148, 30)
         Me.lblStatus.TabIndex = 0
@@ -222,9 +227,9 @@ Partial Class frmMain
         Me.lvEntries.CheckBoxes = True
         Me.lvEntries.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
         Me.lvEntries.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lvEntries.Location = New System.Drawing.Point(12, 144)
+        Me.lvEntries.Location = New System.Drawing.Point(12, 164)
         Me.lvEntries.Name = "lvEntries"
-        Me.lvEntries.Size = New System.Drawing.Size(610, 150)
+        Me.lvEntries.Size = New System.Drawing.Size(610, 130)
         Me.lvEntries.TabIndex = 15
         Me.lvEntries.UseCompatibleStateImageBehavior = False
         Me.lvEntries.View = System.Windows.Forms.View.Details
@@ -260,11 +265,34 @@ Partial Class frmMain
         '
         'GroupBox2
         '
-        Me.GroupBox2.Location = New System.Drawing.Point(462, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(462, 33)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(160, 125)
         Me.GroupBox2.TabIndex = 19
         Me.GroupBox2.TabStop = False
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HelpToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(634, 24)
+        Me.MenuStrip1.TabIndex = 20
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'HelpToolStripMenuItem
+        '
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
+        Me.HelpToolStripMenuItem.Text = "&Help"
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Text = "&About"
         '
         'frmMain
         '
@@ -279,16 +307,22 @@ Partial Class frmMain
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.chkStatus)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MainMenuStrip = Me.MenuStrip1
+        Me.MinimumSize = New System.Drawing.Size(640, 360)
         Me.Name = "frmMain"
-        Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Active Window Logger"
         Me.TopMost = True
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents tmrPoll As System.Windows.Forms.Timer
@@ -311,5 +345,8 @@ Partial Class frmMain
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
