@@ -3,14 +3,21 @@ Imports System.Data
 Imports System.Data.OleDb
 
 Public Class frmMain
+
     Private Declare Function GetForegroundWindow Lib "user32.dll" () As IntPtr
     Private Declare Function GetWindowThreadProcessId Lib "user32.dll" (ByVal hwnd As IntPtr, ByRef lpdwProcessID As Integer) As Integer
     Private Declare Function GetWindowText Lib "user32.dll" Alias "GetWindowTextA" (ByVal hWnd As IntPtr, ByVal WinTitle As String, ByVal MaxLength As Integer) As Integer
     Private Declare Function GetWindowTextLength Lib "user32.dll" Alias "GetWindowTextLengthA" (ByVal hwnd As Long) As Integer
 
+    ' Set during app launch.
+    ' Used to track how long the app has been runnning. 
     Dim AppLaunchTime As New Date
 
-    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrPoll.Tick
+    Private Sub tmrMinute_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMinute.Tick
+        lblStatus.Text = lvEntries.Items.Count.ToString + " windows" + vbCrLf + "since last " + DateDiff(DateInterval.Minute, AppLaunchTime, DateTime.UtcNow).ToString + " minutes"
+    End Sub
+
+    Private Sub tmrPoll_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrPoll.Tick
 
         ' Get the Handle to the Current Foreground Window
         Dim hWnd As IntPtr = GetForegroundWindow()
@@ -62,13 +69,13 @@ Public Class frmMain
         newEntry.SubItems.Add(Format(Now, "yyyy/MM/dd HH:mm:ss"))
         txtWindowStatus.Text = "Started tracking active window"
 
-        lblStatus.Text = lvEntries.Items.Count.ToString + " windows" + vbCrLf + "since " + DateDiff(DateInterval.Minute, AppLaunchTime, DateTime.UtcNow).ToString + " minutes"
+        lblStatus.Text = lvEntries.Items.Count.ToString + " windows" + vbCrLf + "since last " + DateDiff(DateInterval.Minute, AppLaunchTime, DateTime.UtcNow).ToString + " minutes"
 
     End Sub
 
     Private Sub chkStatus_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkStatus.CheckedChanged
         If chkStatus.Checked Then
-            chkStatus.BackColor = Color.DarkGreen
+            chkStatus.BackColor = Color.LimeGreen
             chkStatus.Text = vbCrLf + "Logging Active Windows" + vbCrLf + vbCrLf + "( click to pause )"
             tmrPoll.Enabled = True
         Else
@@ -81,10 +88,6 @@ Public Class frmMain
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         chkStatus.Checked = True
         AppLaunchTime = DateTime.UtcNow
-    End Sub
-
-    Private Sub tmrMinute_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMinute.Tick
-        lblStatus.Text = lvEntries.Items.Count.ToString + " windows" + vbCrLf + "since " + DateDiff(DateInterval.Minute, AppLaunchTime, DateTime.UtcNow).ToString + " minutes"
     End Sub
 
     Private Sub lvEntries_ItemChecked(ByVal sender As Object, ByVal e As System.Windows.Forms.ItemCheckedEventArgs) Handles lvEntries.ItemChecked

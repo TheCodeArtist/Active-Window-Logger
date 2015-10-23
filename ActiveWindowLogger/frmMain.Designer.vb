@@ -42,6 +42,7 @@ Partial Class frmMain
         Me.ColumnHeader3 = New System.Windows.Forms.ColumnHeader
         Me.ColumnHeader4 = New System.Windows.Forms.ColumnHeader
         Me.ColumnHeader5 = New System.Windows.Forms.ColumnHeader
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -57,12 +58,12 @@ Partial Class frmMain
         Me.txtPID.Cursor = System.Windows.Forms.Cursors.Default
         Me.txtPID.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPID.ForeColor = System.Drawing.Color.Black
-        Me.txtPID.Location = New System.Drawing.Point(12, 19)
-        Me.txtPID.MinimumSize = New System.Drawing.Size(400, 18)
+        Me.txtPID.Location = New System.Drawing.Point(5, 17)
+        Me.txtPID.MinimumSize = New System.Drawing.Size(250, 18)
         Me.txtPID.Name = "txtPID"
         Me.txtPID.ReadOnly = True
         Me.txtPID.ShortcutsEnabled = False
-        Me.txtPID.Size = New System.Drawing.Size(400, 15)
+        Me.txtPID.Size = New System.Drawing.Size(250, 15)
         Me.txtPID.TabIndex = 1
         Me.txtPID.TabStop = False
         Me.txtPID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -75,12 +76,12 @@ Partial Class frmMain
         Me.txtProcessName.Cursor = System.Windows.Forms.Cursors.Default
         Me.txtProcessName.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtProcessName.ForeColor = System.Drawing.Color.Black
-        Me.txtProcessName.Location = New System.Drawing.Point(12, 40)
-        Me.txtProcessName.MinimumSize = New System.Drawing.Size(400, 18)
+        Me.txtProcessName.Location = New System.Drawing.Point(5, 38)
+        Me.txtProcessName.MinimumSize = New System.Drawing.Size(250, 18)
         Me.txtProcessName.Name = "txtProcessName"
         Me.txtProcessName.ReadOnly = True
         Me.txtProcessName.ShortcutsEnabled = False
-        Me.txtProcessName.Size = New System.Drawing.Size(400, 15)
+        Me.txtProcessName.Size = New System.Drawing.Size(250, 15)
         Me.txtProcessName.TabIndex = 2
         Me.txtProcessName.TabStop = False
         Me.txtProcessName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -93,12 +94,12 @@ Partial Class frmMain
         Me.txtMainWindowTitle.Cursor = System.Windows.Forms.Cursors.Default
         Me.txtMainWindowTitle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMainWindowTitle.ForeColor = System.Drawing.Color.Black
-        Me.txtMainWindowTitle.Location = New System.Drawing.Point(12, 61)
-        Me.txtMainWindowTitle.MinimumSize = New System.Drawing.Size(400, 18)
+        Me.txtMainWindowTitle.Location = New System.Drawing.Point(5, 59)
+        Me.txtMainWindowTitle.MinimumSize = New System.Drawing.Size(250, 18)
         Me.txtMainWindowTitle.Name = "txtMainWindowTitle"
         Me.txtMainWindowTitle.ReadOnly = True
         Me.txtMainWindowTitle.ShortcutsEnabled = False
-        Me.txtMainWindowTitle.Size = New System.Drawing.Size(400, 15)
+        Me.txtMainWindowTitle.Size = New System.Drawing.Size(250, 15)
         Me.txtMainWindowTitle.TabIndex = 3
         Me.txtMainWindowTitle.TabStop = False
         Me.txtMainWindowTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -111,12 +112,12 @@ Partial Class frmMain
         Me.txtWindowTitle.Cursor = System.Windows.Forms.Cursors.Default
         Me.txtWindowTitle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtWindowTitle.ForeColor = System.Drawing.Color.Black
-        Me.txtWindowTitle.Location = New System.Drawing.Point(12, 82)
-        Me.txtWindowTitle.MinimumSize = New System.Drawing.Size(400, 18)
+        Me.txtWindowTitle.Location = New System.Drawing.Point(5, 80)
+        Me.txtWindowTitle.MinimumSize = New System.Drawing.Size(250, 18)
         Me.txtWindowTitle.Name = "txtWindowTitle"
         Me.txtWindowTitle.ReadOnly = True
         Me.txtWindowTitle.ShortcutsEnabled = False
-        Me.txtWindowTitle.Size = New System.Drawing.Size(400, 15)
+        Me.txtWindowTitle.Size = New System.Drawing.Size(250, 15)
         Me.txtWindowTitle.TabIndex = 4
         Me.txtWindowTitle.TabStop = False
         Me.txtWindowTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -128,12 +129,12 @@ Partial Class frmMain
         Me.txtWindowStatus.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtWindowStatus.Cursor = System.Windows.Forms.Cursors.Default
         Me.txtWindowStatus.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtWindowStatus.Location = New System.Drawing.Point(12, 103)
-        Me.txtWindowStatus.MinimumSize = New System.Drawing.Size(400, 18)
+        Me.txtWindowStatus.Location = New System.Drawing.Point(5, 101)
+        Me.txtWindowStatus.MinimumSize = New System.Drawing.Size(250, 18)
         Me.txtWindowStatus.Name = "txtWindowStatus"
         Me.txtWindowStatus.ReadOnly = True
         Me.txtWindowStatus.ShortcutsEnabled = False
-        Me.txtWindowStatus.Size = New System.Drawing.Size(400, 15)
+        Me.txtWindowStatus.Size = New System.Drawing.Size(250, 15)
         Me.txtWindowStatus.TabIndex = 5
         Me.txtWindowStatus.TabStop = False
         Me.txtWindowStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -146,9 +147,9 @@ Partial Class frmMain
         Me.chkStatus.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.chkStatus.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkStatus.ForeColor = System.Drawing.Color.Snow
-        Me.chkStatus.Location = New System.Drawing.Point(12, 12)
+        Me.chkStatus.Location = New System.Drawing.Point(12, 17)
         Me.chkStatus.Name = "chkStatus"
-        Me.chkStatus.Size = New System.Drawing.Size(180, 124)
+        Me.chkStatus.Size = New System.Drawing.Size(160, 120)
         Me.chkStatus.TabIndex = 7
         Me.chkStatus.TabStop = False
         Me.chkStatus.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "STOPPED" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
@@ -163,9 +164,9 @@ Partial Class frmMain
         Me.GroupBox1.Controls.Add(Me.txtWindowStatus)
         Me.GroupBox1.Controls.Add(Me.txtWindowTitle)
         Me.GroupBox1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.GroupBox1.Location = New System.Drawing.Point(198, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(178, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(424, 125)
+        Me.GroupBox1.Size = New System.Drawing.Size(278, 125)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Current Window Details"
@@ -174,11 +175,11 @@ Partial Class frmMain
         '
         Me.lblStatus.BackColor = System.Drawing.Color.LemonChiffon
         Me.lblStatus.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatus.Location = New System.Drawing.Point(18, 101)
+        Me.lblStatus.Location = New System.Drawing.Point(18, 100)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(168, 30)
+        Me.lblStatus.Size = New System.Drawing.Size(148, 30)
         Me.lblStatus.TabIndex = 0
-        Me.lblStatus.Text = "0 windows" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "since 0 minutes"
+        Me.lblStatus.Text = "0 windows" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "since last 0 minutes"
         Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'tmrMinute
@@ -257,11 +258,20 @@ Partial Class frmMain
         Me.ColumnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.ColumnHeader5.Width = 115
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Location = New System.Drawing.Point(462, 12)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(160, 125)
+        Me.GroupBox2.TabIndex = 19
+        Me.GroupBox2.TabStop = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(634, 335)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.btnExportSelected)
         Me.Controls.Add(Me.chkSelect)
         Me.Controls.Add(Me.btnDeleteChecked)
@@ -300,5 +310,6 @@ Partial Class frmMain
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
 
 End Class
