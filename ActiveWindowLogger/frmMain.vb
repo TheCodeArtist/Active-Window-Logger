@@ -215,7 +215,7 @@ Public Class frmMain
 
             Dim table As String = String.Join(",", headers) & Environment.NewLine
             For Each a In items
-                table &= String.Join(",", a) & Environment.NewLine
+                table &= String.Join(Chr(31) & ",", a) & Chr(30) & Environment.NewLine
             Next
 
             table = table.TrimEnd(CChar(vbCr), CChar(vbLf))
