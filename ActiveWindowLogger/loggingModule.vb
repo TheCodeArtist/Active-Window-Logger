@@ -1,18 +1,12 @@
 ﻿Module loggingModule
 
+    '****************************************************************
+    ' window monitoring 
+    '****************************************************************
     Private Declare Function GetForegroundWindow Lib "user32.dll" () As IntPtr
     Private Declare Function GetWindowThreadProcessId Lib "user32.dll" (ByVal hwnd As IntPtr, ByRef lpdwProcessID As Integer) As Integer
     Private Declare Function GetWindowText Lib "user32.dll" Alias "GetWindowTextA" (ByVal hWnd As IntPtr, ByVal WinTitle As String, ByVal MaxLength As Integer) As Integer
     Private Declare Function GetWindowTextLength Lib "user32.dll" Alias "GetWindowTextLengthA" (ByVal hwnd As Long) As Integer
-
-
-    ' Set during app launch.
-    ' Used to track how long the app has been runnning. 
-    Dim AppLaunchTime As New Date
-
-    Public Sub initAppLaunchTime()
-        AppLaunchTime = DateTime.UtcNow
-    End Sub
 
     Public Sub logStatus()
         frmMain.lblStatus.Text = frmMain.lvEntries.Items.Count.ToString + " windows" + vbCrLf + "since last " + DateDiff(DateInterval.Minute, AppLaunchTime, DateTime.UtcNow).ToString + " minutes"
@@ -85,6 +79,37 @@
 
         End With
 
+    End Sub
+
+    '****************************************************************
+    ' system lock/unlock monitoring
+    '****************************************************************
+    Public Declare Function WTSRegisterSessionNotification Lib "Wtsapi32" (ByVal hWnd As IntPtr, ByVal THISSESS As Long) As Long
+    Public Declare Function WTSUnRegisterSessionNotification Lib "Wtsapi32" (ByVal hWnd As IntPtr) As Long
+
+    Public Const NOTIFY_FOR_ALL_SESSIONS As Integer = 1
+    Public Const NOTIFY_FOR_THIS_SESSION As Integer = 0
+    Public Const WM_WTSSESSION_CHANGE As Integer = &H2B1
+
+    Public Enum WTS
+        CONSOLE_CONNECT = 1
+        CONSOLE_DISCONNECT = 2
+        REMOTE_CONNECT = 3
+        REMOTE_DISCONNECT = 4
+        SESSION_LOGON = 5
+        SESSION_LOGOFF = 6
+        SESSION_LOCK = 7
+        SESSION_UNLOCK = 8
+        SESSION_REMOTE_CONTROL = 9
+    End Enum
+
+    '****************************************************************
+    ' Used to track how long the app has been runnning. 
+    '****************************************************************
+    Dim AppLaunchTime As New Date
+
+    Public Sub initAppLaunchTime()
+        AppLaunchTime = DateTime.UtcNow
     End Sub
 
 End Module

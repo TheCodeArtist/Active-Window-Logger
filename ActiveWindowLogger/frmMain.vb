@@ -1,27 +1,6 @@
 ﻿Option Explicit On
-Imports System.Data
-Imports System.Data.OleDb
 
 Public Class frmMain
-
-    Private Declare Function WTSRegisterSessionNotification Lib "Wtsapi32" (ByVal hWnd As IntPtr, ByVal THISSESS As Long) As Long
-    Private Declare Function WTSUnRegisterSessionNotification Lib "Wtsapi32" (ByVal hWnd As IntPtr) As Long
-
-    Private Const NOTIFY_FOR_ALL_SESSIONS As Integer = 1
-    Private Const NOTIFY_FOR_THIS_SESSION As Integer = 0
-    Private Const WM_WTSSESSION_CHANGE As Integer = &H2B1
-
-    Private Enum WTS
-        CONSOLE_CONNECT = 1
-        CONSOLE_DISCONNECT = 2
-        REMOTE_CONNECT = 3
-        REMOTE_DISCONNECT = 4
-        SESSION_LOGON = 5
-        SESSION_LOGOFF = 6
-        SESSION_LOCK = 7
-        SESSION_UNLOCK = 8
-        SESSION_REMOTE_CONTROL = 9
-    End Enum
 
     Private Sub tmrMinute_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMinute.Tick
         logStatus()
@@ -50,50 +29,8 @@ Public Class frmMain
         initAppLaunchTime()
     End Sub
 
-    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
-        Dim newEntry As ListViewItem
 
-        Select Case m.Msg
-            Case WM_WTSSESSION_CHANGE
-                Select Case m.WParam.ToInt32
-                    Case WTS.CONSOLE_CONNECT
-                        'Debug.Print("A session was connected to the console session.")
-                    Case WTS.CONSOLE_DISCONNECT
-                        'Debug.Print("A session was disconnected from the console session.")
-                    Case WTS.REMOTE_CONNECT
-                        'Debug.Print("A session was connected to the remote session.")
-                    Case WTS.REMOTE_DISCONNECT
-                        'Debug.Print("A session was disconnected from the remote session.")
-                    Case WTS.SESSION_LOGON
-                        'Debug.Print("A user has logged on to the session.")
-                    Case WTS.SESSION_LOGOFF
-                        'Debug.Print("A user has logged off the session.")
-                    Case WTS.SESSION_LOCK
-                        'Debug.Print("A session has been locked.")
-                        ' Populate the listview with Windows locked entry
-                        newEntry = lvEntries.Items.Insert(0, "-1")
-                        newEntry.SubItems.Add("Microsoft")
-                        newEntry.SubItems.Add("Windows")
-                        newEntry.SubItems.Add("Locked")
-                        newEntry.SubItems.Add(Format(Now, "yyyy/MM/dd HH:mm:ss"))
-                    Case WTS.SESSION_UNLOCK
-                        'Debug.Print("A session has been unlocked.")
-                        ' Populate the listview with Windows locked entry
-                        newEntry = lvEntries.Items.Insert(0, "-1")
-                        newEntry.SubItems.Add("Microsoft")
-                        newEntry.SubItems.Add("Windows")
-                        newEntry.SubItems.Add("Unlocked")
-                        newEntry.SubItems.Add(Format(Now, "yyyy/MM/dd HH:mm:ss"))
-                    Case WTS.SESSION_REMOTE_CONTROL
-                        'Debug.Print("A session has changed its remote controlled status. To determine the status, call GetSystemMetrics and check the SM_REMOTECONTROL metric.")
-                End Select
-        End Select
-
-        MyBase.WndProc(m)
-
-    End Sub
-
-    Private Sub Form1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub frmMain_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         WTSUnRegisterSessionNotification(Me.Handle)
     End Sub
 
@@ -139,8 +76,9 @@ Public Class frmMain
         .FilterIndex = 0, _
         .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)}
 
-        'show the dialog + display the results in a msgbox unless cancelled
-
+        '****************************************************************
+        ' show the dialog + export window log unless cancelled
+        '****************************************************************
         If sfd.ShowDialog = DialogResult.OK Then
 
             Dim headers = (From ch In lvEntries.Columns _
@@ -160,7 +98,7 @@ Public Class frmMain
 
             table = table.TrimEnd(CChar(vbCr), CChar(vbLf))
 
-            ' Add retry/abort here in case file write fails (eg. if file open in other app)
+            ' TODO: Issue#11: Add retry/abort here in case file write fails (eg. if file open in other app)
             IO.File.WriteAllText(sfd.FileName, table)
 
         End If
@@ -175,4 +113,5 @@ Public Class frmMain
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
         frmAbout.ShowDialog()
     End Sub
+
 End Class
