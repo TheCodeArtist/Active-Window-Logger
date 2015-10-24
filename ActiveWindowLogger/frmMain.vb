@@ -4,11 +4,6 @@ Imports System.Data.OleDb
 
 Public Class frmMain
 
-    Private Declare Function GetForegroundWindow Lib "user32.dll" () As IntPtr
-    Private Declare Function GetWindowThreadProcessId Lib "user32.dll" (ByVal hwnd As IntPtr, ByRef lpdwProcessID As Integer) As Integer
-    Private Declare Function GetWindowText Lib "user32.dll" Alias "GetWindowTextA" (ByVal hWnd As IntPtr, ByVal WinTitle As String, ByVal MaxLength As Integer) As Integer
-    Private Declare Function GetWindowTextLength Lib "user32.dll" Alias "GetWindowTextLengthA" (ByVal hwnd As Long) As Integer
-
     Private Declare Function WTSRegisterSessionNotification Lib "Wtsapi32" (ByVal hWnd As IntPtr, ByVal THISSESS As Long) As Long
     Private Declare Function WTSUnRegisterSessionNotification Lib "Wtsapi32" (ByVal hWnd As IntPtr) As Long
 
@@ -28,68 +23,13 @@ Public Class frmMain
         SESSION_REMOTE_CONTROL = 9
     End Enum
 
-    ' Set during app launch.
-    ' Used to track how long the app has been runnning. 
-    Dim AppLaunchTime As New Date
-
     Private Sub tmrMinute_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMinute.Tick
-        lblStatus.Text = lvEntries.Items.Count.ToString + " windows" + vbCrLf + "since last " + DateDiff(DateInterval.Minute, AppLaunchTime, DateTime.UtcNow).ToString + " minutes"
+        logStatus()
     End Sub
 
     Private Sub tmrPoll_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrPoll.Tick
-
-        ' Get the Handle to the Current Foreground Window
-        Dim hWnd As IntPtr = GetForegroundWindow()
-        If hWnd = IntPtr.Zero Then Exit Sub
-
-        ' Find the Length of the Window's Title
-        Dim TitleLength As Integer
-        TitleLength = GetWindowTextLength(hWnd)
-
-        ' Find the Window's Title
-        Dim WindowTitle As String = StrDup(TitleLength + 1, "*")
-        GetWindowText(hWnd, WindowTitle, TitleLength + 1)
-
-        ' Find the PID of the Application that Owns the Window
-        Dim pid As Integer = 0
-        GetWindowThreadProcessId(hWnd, pid)
-        If pid = 0 Then Exit Sub
-
-        ' Get the actual PROCESS from the PID
-        Dim proc As Process = Process.GetProcessById(pid)
-        If proc Is Nothing Then Exit Sub
-
-        ' Populate the textboxes with current data
-        txtPID.Text = pid.ToString
-        txtProcessName.Text = proc.ProcessName
-        txtMainWindowTitle.Text = proc.MainWindowTitle
-        txtWindowTitle.Text = WindowTitle
-
-        ' Ignore own Window
-        If txtWindowTitle.Text.Equals(Me.Text) Then
-            txtWindowStatus.Text = "Ignoring " + Me.Text
-            Exit Sub
-        End If
-
-        ' If WindowsTitles of new entry and last entry match, skip/consolidate
-        If lvEntries.Items.Count Then
-            If txtWindowTitle.Text.Equals(lvEntries.Items(0).SubItems(3).Text) Then
-                txtWindowStatus.Text = "Same window already active"
-                Exit Sub
-            End If
-        End If
-
-        ' Populate the listview with new entry of above current data
-        Dim newEntry As ListViewItem
-        newEntry = lvEntries.Items.Insert(0, txtPID.Text)
-        newEntry.SubItems.Add(txtProcessName.Text)
-        newEntry.SubItems.Add(txtMainWindowTitle.Text)
-        newEntry.SubItems.Add(txtWindowTitle.Text)
-        newEntry.SubItems.Add(Format(Now, "yyyy/MM/dd HH:mm:ss"))
-        txtWindowStatus.Text = "Started tracking active window"
-
-        lblStatus.Text = lvEntries.Items.Count.ToString + " windows" + vbCrLf + "since last " + DateDiff(DateInterval.Minute, AppLaunchTime, DateTime.UtcNow).ToString + " minutes"
-
+        logActiveWindow()
+        logStatus()
     End Sub
 
     Private Sub chkStatus_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkStatus.CheckedChanged
@@ -107,7 +47,7 @@ Public Class frmMain
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         WTSRegisterSessionNotification(Me.Handle, NOTIFY_FOR_ALL_SESSIONS)
         chkStatus.Checked = True
-        AppLaunchTime = DateTime.UtcNow
+        initAppLaunchTime()
     End Sub
 
     Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
