@@ -229,7 +229,7 @@ Public Class frmMain
 
     Private Sub frmMain_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
         lvEntries.Width = Me.Width - 30
-        lvEntries.Height = Me.Height - 216
+        lvEntries.Height = Me.Height - 230      ' form - ( menubar + top-frame + bottom buttons + spacings)
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
