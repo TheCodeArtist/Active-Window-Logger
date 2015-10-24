@@ -278,7 +278,7 @@ Partial Class frmMain
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(634, 24)
         Me.MenuStrip1.TabIndex = 20
-        Me.MenuStrip1.Text = "MenuStrip1"
+        Me.MenuStrip1.Text = "MainMenuStrip"
         '
         'HelpToolStripMenuItem
         '
@@ -291,7 +291,7 @@ Partial Class frmMain
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
         Me.AboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
         Me.AboutToolStripMenuItem.Text = "&About"
         '
         'frmMain
