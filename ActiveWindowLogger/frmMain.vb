@@ -34,6 +34,49 @@ Public Class frmMain
         WTSUnRegisterSessionNotification(Me.Handle)
     End Sub
 
+    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+        Dim newEntry As ListViewItem
+
+        Select Case m.Msg
+            Case WM_WTSSESSION_CHANGE
+                Select Case m.WParam.ToInt32
+                    Case WTS.CONSOLE_CONNECT
+                        'Debug.Print("A session was connected to the console session.")
+                    Case WTS.CONSOLE_DISCONNECT
+                        'Debug.Print("A session was disconnected from the console session.")
+                    Case WTS.REMOTE_CONNECT
+                        'Debug.Print("A session was connected to the remote session.")
+                    Case WTS.REMOTE_DISCONNECT
+                        'Debug.Print("A session was disconnected from the remote session.")
+                    Case WTS.SESSION_LOGON
+                        'Debug.Print("A user has logged on to the session.")
+                    Case WTS.SESSION_LOGOFF
+                        'Debug.Print("A user has logged off the session.")
+                    Case WTS.SESSION_LOCK
+                        'Debug.Print("A session has been locked.")
+                        ' Populate the listview with Windows locked entry
+                        newEntry = lvEntries.Items.Insert(0, "-1")
+                        newEntry.SubItems.Add("Microsoft")
+                        newEntry.SubItems.Add("Windows")
+                        newEntry.SubItems.Add("Locked")
+                        newEntry.SubItems.Add(Format(Now, "yyyy/MM/dd HH:mm:ss"))
+                    Case WTS.SESSION_UNLOCK
+                        'Debug.Print("A session has been unlocked.")
+                        ' Populate the listview with Windows locked entry
+                        newEntry = lvEntries.Items.Insert(0, "-1")
+                        newEntry.SubItems.Add("Microsoft")
+                        newEntry.SubItems.Add("Windows")
+                        newEntry.SubItems.Add("Unlocked")
+                        newEntry.SubItems.Add(Format(Now, "yyyy/MM/dd HH:mm:ss"))
+                    Case WTS.SESSION_REMOTE_CONTROL
+                        'Debug.Print("A session has changed its remote controlled status. To determine the status, call GetSystemMetrics and check the SM_REMOTECONTROL metric.")
+                End Select
+        End Select
+
+        MyBase.WndProc(m)
+
+    End Sub
+
     Private Sub lvEntries_ItemChecked(ByVal sender As Object, ByVal e As System.Windows.Forms.ItemCheckedEventArgs) Handles lvEntries.ItemChecked
         If (lvEntries.Items.Count <> lvEntries.CheckedItems.Count) And (lvEntries.CheckedItems.Count > 0) Then
             chkSelect.CheckState = CheckState.Indeterminate
