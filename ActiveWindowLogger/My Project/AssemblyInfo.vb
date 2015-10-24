@@ -17,7 +17,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyCopyright("CC BY-SA 4.0 - 2015")> 
 <Assembly: AssemblyTrademark("Active Window Logger")> 
 
-<Assembly: ComVisible(True)> 
+<Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("78626270-da34-490b-aff6-667fdc88da5d")> 
@@ -33,7 +33,7 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.0.0.3")> 
+<Assembly: AssemblyFileVersion("1.0.0.3")> 
 
 <Assembly: NeutralResourcesLanguageAttribute("en-GB")> 
