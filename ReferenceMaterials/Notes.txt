@@ -1,6 +1,13 @@
 
-
-
 Putty + Screen to show pwd as putty window title.
 PROMPT_COMMAND='echo -ne "\e]0;$USER@${HOSTNAME}: $(pwd -P)\a"'
 (ensure terminal feature settings NOT disabled remote from setting putty title.)
+
+Similar projects include:
+    * Old. No updates. Not sure if they work. (TODO:evaluate)
+	- http://scott.sherrillmix.com/blog/programmer/active-window-logger/
+	- https://github.com/seanbuscay/owlwindowlogger
+    * Commercial software
+	- https://www.rescuetime.com/features
+	- https://wakatime.com/features
+
