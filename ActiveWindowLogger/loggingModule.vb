@@ -76,11 +76,11 @@
             End If
 
             '****************************************************************
-            ' Consolidate windowsTitles of new and last entries match.
+            ' Consolidate windowsTitles if new and prev entries match.
             '****************************************************************
             If .lvEntries.Items.Count Then
                 If .txtWindowTitle.Text.Equals(.lvEntries.Items(0).SubItems(3).Text) Then
-                    .txtWindowStatus.Text = "Same window already active"
+                    .txtWindowStatus.Text = "Continuing tracking active window"
                     Exit Sub
                 End If
             End If
