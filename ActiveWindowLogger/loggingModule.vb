@@ -12,6 +12,25 @@
         frmMain.lblStatus.Text = frmMain.lvEntries.Items.Count.ToString + " windows" + vbCrLf + "since last " + DateDiff(DateInterval.Minute, AppLaunchTime, DateTime.UtcNow).ToString + " minutes"
     End Sub
 
+    Public Sub checkToDropPrevWindowLog()
+
+        With frmMain
+
+            ' The duration, for which the previous window was active is calculated as
+            ' PrevWindowRuntime = currentWindowTimestamp - prevWindowTimestamp
+            Dim PrevWindowRuntime As Long = DateDiff("s", .lvEntries.Items(1).SubItems(4).Text, .lvEntries.Items(0).SubItems(4).Text)
+
+            ' If the previous window was active for shorter than the threshold,
+            ' delete the previous window log entry from the list.
+            ' TODO: Support GUI-configurable minimum-runtime-filter threshold.
+            If (PrevWindowRuntime <= 2) Then
+                .lvEntries.Items(1).Remove()
+            End If
+
+        End With
+
+    End Sub
+
     Public Sub logActiveWindow()
 
         With frmMain
@@ -77,6 +96,14 @@
             newEntry.SubItems.Add(Format(Now, "yyyy/MM/dd HH:mm:ss"))
             .lvEntries.Items(0).Checked = True
             .txtWindowStatus.Text = "Started tracking active window"
+
+            '****************************************************************
+            ' If listview has a previous entry, check if its runtime is less 
+            ' than the threshold and whether the prev entry must be dropped.
+            '****************************************************************
+            If .lvEntries.Items.Count > 1 Then
+                checkToDropPrevWindowLog()
+            End If
 
         End With
 
