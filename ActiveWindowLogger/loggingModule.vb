@@ -75,6 +75,7 @@
             newEntry.SubItems.Add(.txtMainWindowTitle.Text)
             newEntry.SubItems.Add(.txtWindowTitle.Text)
             newEntry.SubItems.Add(Format(Now, "yyyy/MM/dd HH:mm:ss"))
+            .lvEntries.Items(0).Checked = True
             .txtWindowStatus.Text = "Started tracking active window"
 
         End With
