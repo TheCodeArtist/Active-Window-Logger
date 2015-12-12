@@ -134,7 +134,7 @@ Public Class frmMain
                       Let si = DirectCast(subitem, ListViewItem.ListViewSubItem) _
                       Select si.Text).ToArray()).ToArray()
 
-            Dim table As String = String.Join(",", headers) & Environment.NewLine
+            Dim table As String = String.Join(Chr(31) & ",", headers) & Chr(30) & Environment.NewLine
             For Each a In items
                 table &= String.Join(Chr(31) & ",", a) & Chr(30) & Environment.NewLine
             Next
