@@ -101,11 +101,30 @@ Public Class frmMain
     End Sub
 
     Private Sub btnDeleteChecked_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDeleteChecked.Click
+        Dim prompt As String
+
+        ' Prepare prompt string with appropriate plularity of entry/entries.
+        If lvEntries.CheckedItems.Count = 1 Then
+            prompt = "1 entry will be deleted from the list."
+        Else
+            prompt = Str(lvEntries.CheckedItems.Count) + " entries will be deleted from the list."
+        End If
+
+        ' Prompt user for confirmation and if user cancels, exit without doing anything further.
+        Dim UserChoice As MsgBoxResult = MsgBox(prompt + " Continue?...",
+                                                MsgBoxStyle.Exclamation + MsgBoxStyle.ApplicationModal + MsgBoxStyle.OkCancel,
+                                                "Delete Selected Entries")
+        If UserChoice = vbCancel Then
+            Exit Sub
+        End If
+
+        ' Make one pass through the list and delete each list entry that is checked
         For i = (lvEntries.Items.Count - 1) To 0 Step -1
             If lvEntries.Items(i).Checked = True Then
                 lvEntries.Items.RemoveAt(i)
             End If
         Next
+
     End Sub
 
     Private Sub chkSelect_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkSelect.Click
