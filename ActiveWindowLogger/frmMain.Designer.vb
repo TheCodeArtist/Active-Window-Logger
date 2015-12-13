@@ -22,31 +22,31 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.tmrPoll = New System.Windows.Forms.Timer(Me.components)
-        Me.txtPID = New System.Windows.Forms.TextBox
-        Me.txtProcessName = New System.Windows.Forms.TextBox
-        Me.txtMainWindowTitle = New System.Windows.Forms.TextBox
-        Me.txtWindowTitle = New System.Windows.Forms.TextBox
-        Me.txtWindowStatus = New System.Windows.Forms.TextBox
-        Me.chkStatus = New System.Windows.Forms.CheckBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.lblStatus = New System.Windows.Forms.Label
+        Me.txtPID = New System.Windows.Forms.TextBox()
+        Me.txtProcessName = New System.Windows.Forms.TextBox()
+        Me.txtMainWindowTitle = New System.Windows.Forms.TextBox()
+        Me.txtWindowTitle = New System.Windows.Forms.TextBox()
+        Me.txtWindowStatus = New System.Windows.Forms.TextBox()
+        Me.chkStatus = New System.Windows.Forms.CheckBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblStatus = New System.Windows.Forms.Label()
         Me.tmrMinute = New System.Windows.Forms.Timer(Me.components)
-        Me.btnExportSelected = New System.Windows.Forms.Button
-        Me.chkSelect = New System.Windows.Forms.CheckBox
-        Me.btnDeleteChecked = New System.Windows.Forms.Button
-        Me.lvEntries = New System.Windows.Forms.ListView
-        Me.ColumnHeader1 = New System.Windows.Forms.ColumnHeader
-        Me.ColumnHeader2 = New System.Windows.Forms.ColumnHeader
-        Me.ColumnHeader3 = New System.Windows.Forms.ColumnHeader
-        Me.ColumnHeader4 = New System.Windows.Forms.ColumnHeader
-        Me.ColumnHeader5 = New System.Windows.Forms.ColumnHeader
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.btnExportSelected = New System.Windows.Forms.Button()
+        Me.chkSelect = New System.Windows.Forms.CheckBox()
+        Me.btnDeleteChecked = New System.Windows.Forms.Button()
+        Me.lvEntries = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -195,9 +195,10 @@ Partial Class frmMain
         'btnExportSelected
         '
         Me.btnExportSelected.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnExportSelected.Location = New System.Drawing.Point(482, 305)
+        Me.btnExportSelected.Enabled = False
+        Me.btnExportSelected.Location = New System.Drawing.Point(482, 297)
         Me.btnExportSelected.Name = "btnExportSelected"
-        Me.btnExportSelected.Size = New System.Drawing.Size(140, 20)
+        Me.btnExportSelected.Size = New System.Drawing.Size(140, 26)
         Me.btnExportSelected.TabIndex = 18
         Me.btnExportSelected.Text = "Export Selected Entries"
         Me.btnExportSelected.UseVisualStyleBackColor = True
@@ -205,7 +206,7 @@ Partial Class frmMain
         'chkSelect
         '
         Me.chkSelect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.chkSelect.Location = New System.Drawing.Point(12, 305)
+        Me.chkSelect.Location = New System.Drawing.Point(12, 302)
         Me.chkSelect.Name = "chkSelect"
         Me.chkSelect.Size = New System.Drawing.Size(91, 18)
         Me.chkSelect.TabIndex = 17
@@ -215,9 +216,10 @@ Partial Class frmMain
         'btnDeleteChecked
         '
         Me.btnDeleteChecked.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnDeleteChecked.Location = New System.Drawing.Point(336, 305)
+        Me.btnDeleteChecked.Enabled = False
+        Me.btnDeleteChecked.Location = New System.Drawing.Point(336, 297)
         Me.btnDeleteChecked.Name = "btnDeleteChecked"
-        Me.btnDeleteChecked.Size = New System.Drawing.Size(140, 20)
+        Me.btnDeleteChecked.Size = New System.Drawing.Size(140, 26)
         Me.btnDeleteChecked.TabIndex = 16
         Me.btnDeleteChecked.Text = "Delete Selected Entries"
         Me.btnDeleteChecked.UseVisualStyleBackColor = True
@@ -229,7 +231,7 @@ Partial Class frmMain
         Me.lvEntries.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvEntries.Location = New System.Drawing.Point(12, 164)
         Me.lvEntries.Name = "lvEntries"
-        Me.lvEntries.Size = New System.Drawing.Size(610, 130)
+        Me.lvEntries.Size = New System.Drawing.Size(610, 127)
         Me.lvEntries.TabIndex = 15
         Me.lvEntries.UseCompatibleStateImageBehavior = False
         Me.lvEntries.View = System.Windows.Forms.View.Details
