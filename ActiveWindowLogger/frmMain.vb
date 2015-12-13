@@ -85,6 +85,17 @@ Public Class frmMain
         ElseIf lvEntries.CheckedItems.Count = 0 Then
             chkSelect.CheckState = CheckState.Unchecked
         End If
+
+        ' Depending upon whther any items in the list are checked,
+        ' Enable/Disable the delete and export buttons.
+        If lvEntries.CheckedItems.Count > 0 Then
+            btnDeleteChecked.Enabled = True
+            btnExportSelected.Enabled = True
+        Else
+            btnDeleteChecked.Enabled = False
+            btnExportSelected.Enabled = False
+        End If
+
     End Sub
 
     Private Sub btnDeleteChecked_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDeleteChecked.Click
