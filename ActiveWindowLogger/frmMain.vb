@@ -78,6 +78,8 @@ Public Class frmMain
     End Sub
 
     Private Sub lvEntries_ItemChecked(ByVal sender As Object, ByVal e As System.Windows.Forms.ItemCheckedEventArgs) Handles lvEntries.ItemChecked
+
+        ' Keep the list and "Select All" checkbox in sync.
         If (lvEntries.Items.Count <> lvEntries.CheckedItems.Count) And (lvEntries.CheckedItems.Count > 0) Then
             chkSelect.CheckState = CheckState.Indeterminate
         ElseIf lvEntries.Items.Count = lvEntries.CheckedItems.Count Then
