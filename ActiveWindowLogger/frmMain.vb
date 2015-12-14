@@ -128,17 +128,25 @@ Public Class frmMain
     End Sub
 
     Private Sub chkSelect_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkSelect.Click
+
+        Me.Cursor = Cursors.WaitCursor
+
         If chkSelect.CheckState = CheckState.Checked Then
             Dim item As ListViewItem
             For Each item In lvEntries.Items
+                My.Application.DoEvents()
                 item.Checked = True
             Next
         ElseIf chkSelect.CheckState = CheckState.Unchecked Then
             Dim item As ListViewItem
             For Each item In lvEntries.CheckedItems
+                My.Application.DoEvents()
                 item.Checked = False
             Next
         End If
+
+        Me.Cursor = Cursors.Default
+
     End Sub
 
     Private Sub btnExportSelected_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExportSelected.Click
