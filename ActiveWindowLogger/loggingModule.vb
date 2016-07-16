@@ -68,6 +68,11 @@
             '****************************************************************
             ' Ignore own app windows
             '****************************************************************
+            If pid = Process.GetCurrentProcess.Id Then
+                .txtWindowStatus.Text = "Ignoring "
+                Exit Sub
+            End If
+
             If .txtWindowTitle.Text.Equals(frmMain.Text) Then
                 .txtWindowStatus.Text = "Ignoring " + frmMain.Text
                 Exit Sub
