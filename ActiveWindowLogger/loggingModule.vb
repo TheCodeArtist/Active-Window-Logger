@@ -33,6 +33,8 @@
 
     Public Sub logActiveWindow()
 
+        On Error Resume Next
+
         With frmMain
 
             ' Get the Handle to the Current Foreground Window
@@ -42,6 +44,7 @@
             ' Find the Length of the Window's Title
             Dim TitleLength As Integer
             TitleLength = GetWindowTextLength(hWnd)
+            If TitleLength = 0 Then Exit Sub
 
             ' Find the Window's Title
             Dim WindowTitle As String = StrDup(TitleLength + 1, "*")
